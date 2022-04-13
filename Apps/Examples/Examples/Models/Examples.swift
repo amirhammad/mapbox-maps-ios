@@ -26,6 +26,10 @@ public struct Examples {
             "examples": cameraExamples
         ],
         [
+            "title": "Lab",
+            "examples": labExamples
+        ],
+        [
             "title": "Location",
             "examples": locationExamples
         ],
@@ -147,6 +151,13 @@ public struct Examples {
                 description: "Use ease(to:) to animate updates to the camera's position.",
                 type: CameraAnimationExample.self),
 
+    ]
+
+    // Examples focused on displaying the user's location.
+    public static let labExamples = [
+        Example(title: "Resizable image",
+                description: "Add a resizable image with cap insets to a style.",
+                type: ResizableImageExample.self)
     ]
 
     // Examples focused on displaying the user's location.
