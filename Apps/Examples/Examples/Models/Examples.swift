@@ -153,7 +153,7 @@ public struct Examples {
 
     ]
 
-    // Examples focused on displaying the user's location.
+    // Miscellaneous examples
     public static let labExamples = [
         Example(title: "Resizable image",
                 description: "Add a resizable image with cap insets to a style.",
