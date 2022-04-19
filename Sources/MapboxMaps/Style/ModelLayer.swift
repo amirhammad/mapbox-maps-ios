@@ -5,27 +5,27 @@ import MapboxCoreMaps
 import MapboxCommon
 
 /// - SeeAlso: [Online documentation](https://www.mapbox.com/mapbox-gl-style-spec/#layers-model)
-internal struct ModelLayer: Layer {
+public struct ModelLayer: Layer {
 
     // MARK: - Conformance to `Layer` protocol
-    internal var id: String
-    internal var type: LayerType
-    internal var filter: Expression?
-    internal var source: String?
-    internal var sourceLayer: String?
-    internal var minZoom: Double?
-    internal var maxZoom: Double?
+    public var id: String
+    public var type: LayerType
+    public var filter: Expression?
+    public var source: String?
+    public var sourceLayer: String?
+    public var minZoom: Double?
+    public var maxZoom: Double?
 
     /// Layer layout properties are applied early in the rendering process and define how data for that layer is passed to the GPU.
     /// Changes to a layout property require an asynchronous "layout" step.
-    internal var layout: ModelLayer.Layout?
+    public var layout: ModelLayer.Layout?
 
-    internal struct Layout: Codable {
+    public struct Layout: Codable {
 
         /// Whether this layer is displayed.
-        internal var visibility: Value<Visibility>?
+        public var visibility: Value<Visibility>?
 
-        internal init() {
+        public init() {
             self.visibility = .constant(.visible)
         }
 
@@ -35,32 +35,32 @@ internal struct ModelLayer: Layer {
     }
 
     /// Changes to a paint property are cheap and happen synchronously.
-    internal var paint: ModelLayer.Paint?
+    public var paint: ModelLayer.Paint?
 
-    internal struct Paint: Codable {
+    public struct Paint: Codable {
 
-        internal init() {}
+        public init() {}
 
         /// Defines rendering behavior of model in respect to other 3D scene objects. Defaults to .common3D.
-        internal var modelLayerType: Value<ModelLayerType>?
+        public var modelLayerType: Value<ModelLayerType>?
 
         /// The opacity of the model layer.
-        internal var modelOpacity: Value<Double>?
+        public var modelOpacity: Value<Double>?
 
         /// Transition options for `modelOpacity`.
-        internal var modelOpacityTransition: StyleTransition?
+        public var modelOpacityTransition: StyleTransition?
 
         /// The rotation of the model in euler angles [lon, lat, z].
-        internal var modelRotation: Value<[Double]>?
+        public var modelRotation: Value<[Double]>?
 
         /// Transition options for `modelRotation`.
-        internal var modelRotationTransition: StyleTransition?
+        public var modelRotationTransition: StyleTransition?
 
         /// The scale of the model.
-        internal var modelScale: Value<[Double]>?
+        public var modelScale: Value<[Double]>?
 
         /// The translation of the model [lon, lat, z]
-        internal var modelTranslation: Value<[Double]>?
+        public var modelTranslation: Value<[Double]>?
 
         enum CodingKeys: String, CodingKey {
             case modelLayerType = "model-type"
@@ -73,14 +73,14 @@ internal struct ModelLayer: Layer {
         }
     }
 
-    internal init(id: String) {
+    public init(id: String) {
         self.id = id
         self.type = LayerType.model
         self.paint = Paint()
         self.layout = Layout()
     }
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "id"
         case type = "type"
         case filter = "filter"
